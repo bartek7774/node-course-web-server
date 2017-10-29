@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const helpers = require('./lib/helpers');
 const fs=require('fs');
 const app = express();
+const port=process.env.PORT||3000;
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs', helpers: helpers }));
 app.set('view engine', 'hbs');
@@ -42,6 +43,6 @@ app.get('/about', (req, res) => {
   });
 });
 
-app.listen(3333, () => {
-  console.log('Server up to work at port');
+app.listen(port, () => {
+  console.log(`Server up to work at ${port}`);
 });
